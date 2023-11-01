@@ -54,7 +54,7 @@ function App() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [loading, page]);
+  }, [loading, page, fetchImages]);
 
   return (
     <div className="App">
