@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import "./App.css"
+import React, { useState, useEffect, useCallback } from "react";
+import "./App.css";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -12,7 +12,7 @@ function App() {
     fetchImages(1);
   };
 
-  const fetchImages = (pageNumber) => {
+  const fetchImages = useCallback((pageNumber) => {
     setLoading(true);
     const key = "ElY1Az2y6m9kGRUmpnEUjdXlytSrYFgAO82Lqme0qq4";
     const url = `https://api.unsplash.com/search/photos?client_id=${key}&query=${search}&per_page=10&page=${pageNumber}`;
@@ -31,7 +31,7 @@ function App() {
         console.error("Error fetching data:", error);
         setLoading(false);
       });
-  };
+  }, [search, images]);
 
   useEffect(() => {
     const handleScroll = () => {
