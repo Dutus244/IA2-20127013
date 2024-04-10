@@ -1,85 +1,24 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [search, setSearch] = useState("");
-  const [images, setImages] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [page, setPage] = useState(1);
+  const [fontSize, setFontSize] = useState(16); // Initial font size
 
-  const handleSearch = () => {
-    setPage(1);
-    fetchImages(1);
+  const increaseFontSize = () => {
+    setFontSize((prevFontSize) => prevFontSize + 5); // Increase font size by 5px
   };
-
-  const fetchImages = useCallback((pageNumber) => {
-    setLoading(true);
-    const key = "ElY1Az2y6m9kGRUmpnEUjdXlytSrYFgAO82Lqme0qq4";
-    const url = `https://api.unsplash.com/search/photos?client_id=${key}&query=${search}&per_page=10&page=${pageNumber}`;
-
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        if (pageNumber === 1) {
-          setImages(data.results);
-        } else {
-          setImages([...images, ...data.results]);
-        }
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-      });
-  }, [search, images]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
-      const body = document.body;
-      const html = document.documentElement;
-      const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
-  
-      const windowBottom = windowHeight + window.pageYOffset;
-      if (windowBottom >= docHeight - 100) {
-        if (!loading) {
-          setPage(page + 1);
-          fetchImages(page + 1);
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [loading, page, fetchImages]);
 
   return (
     <div className="App">
-      <div>
-        <input
-          type="text"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search for images"
-        />
-        <button onClick={handleSearch}>Search</button>
-      </div>
-      <div className="image-container">
-        {loading && images.length === 0 ? (
-          <p>Loading...</p>
-        ) : (
-          images.map((image) => (
-            <img
-              key={image.id}
-              src={image.urls.small}
-              alt={image.alt_description}
-            />
-          ))
-        )}
-      </div>
+      <div id="valentineQuestion"><b>Bà ơi, đi chơi với tui nhé</b></div>
+      <button className="answerButton" onClick={() => window.location.href = '/thankyou'}>
+        Dạaaa
+      </button>
+      <button className="answerButton" onClick={increaseFontSize} style={{ fontSize: `${fontSize}px` }}>
+        Em hong chịu đâu
+      </button>
+      <br />
+      <img src="https://phamvulinh18.github.io/Date/cat.gif" alt="cat asking question" className="responsive"/>
     </div>
   );
 }
