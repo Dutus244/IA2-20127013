@@ -5,9 +5,9 @@ import audioFile from "./thang-dien-justatee-x-phuong-ly-official-mv.mp3"; // Im
 function ThankYou() {
   return (
     <div className="ThankYou">
-      <div id="thankyou"><b>Thenn Kiuuu</b></div>
+      <div style={{fontSize: '50px',}}><b>Thenn Kiuuu</b></div>
 
-      <img id="rizz" src="https://media.tenor.com/W6R7KFBYwhMAAAAi/thank-you.gif" alt="rizzler god" className="responsive" />
+      <img id="rizz" src="https://media.tenor.com/W6R7KFBYwhMAAAAi/thank-you.gif" alt="rizzler god" className="responsive" style={{ width: '400px', maxWidth: '100%', height: 'auto' }} />
       <br />
       <audio controls autoPlay loop>
         <source src={audioFile} type="audio/mpeg" /> {/* Use the imported audio file */}

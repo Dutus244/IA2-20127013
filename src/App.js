@@ -15,7 +15,7 @@ function App() {
         Dạaaa
       </button>
       <button className="answerButton" onClick={increaseFontSize} style={{ fontSize: `${fontSize}px` }}>
-        Em hong chịu đâu
+        Tui hong chịu đâu
       </button>
       <br />
       <img src="https://phamvulinh18.github.io/Date/cat.gif" alt="cat asking question" className="responsive"/>

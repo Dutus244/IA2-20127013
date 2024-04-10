@@ -15,7 +15,7 @@ function Date() {
       });
       console.log("Date added with ID: ", docRef.id);
       
-      window.location.href = '/thankyou';
+      window.location.href = '/activites';
     } catch (error) {
       console.error("Error adding date: ", error);
     }
@@ -30,7 +30,7 @@ function Date() {
         <link rel="stylesheet" href="css/date.css" />
       </head>
       <body>
-        <h1 title="choose a date">Chọn ngày điii em iuu </h1>
+        <h1 title="choose a date">Chọn ngày điii bà </h1>
         <form className="form-group" onSubmit={handleSubmit}>
           <label>Ngày nào: (chọn ngày)</label>
           <div>
